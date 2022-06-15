@@ -77,10 +77,30 @@ func Debug(log_message string) {
 	}
 }
 
+// Debug_error writes a debug level log if the supplied error conatins an error.
+// If the supplied error is empty, no log message is created.
+func Debug_error(err Error, log_message string) {
+	if log_level == "DEBUG" {
+		if err != nil {
+			debug.Println(log_message)
+		}
+	}
+}
+
 // Info writes a info level log.
 func Info(log_message string) {
 	if log_level == "DEBUG" || log_level == "INFO" {
 		info.Println(log_message)
+	}
+}
+
+// Info_error writes a info level log if the supplied error conatins an error.
+// If the supplied error is empty, no log message is created.
+func Info_error(err Error, log_message string) {
+	if log_level == "DEBUG" || log_level == "INFO" {
+		if err != nil {
+			info.Println(log_message)
+		}
 	}
 }
 
@@ -91,9 +111,27 @@ func Warning(log_message string) {
 	}
 }
 
+// Warning_error writes a warning level log if the supplied error conatins an error.
+// If the supplied error is empty, no log message is created.
+func Warning_error(err Error, log_message string) {
+	if log_level == "DEBUG" || log_level == "INFO" || log_level == "WARNING" {
+		if err != nil {
+			warning.Println(log_message)
+		}
+	}
+}
+
 // Critical writes a critical level log.
 // Calling Critical will end the program.
 // Critical should only be called to log an error that can not be recovered from.
 func Critical(log_message string) {
 	critical.Fatalln(log_message)
+}
+
+// Critical_error writes a critical level log if the supplied error conatins an error.
+// If the supplied error is empty, no log message is created.
+func Critical(log_message string) {
+	if err != nil {
+		critical.Fatalln(log_message)
+	}
 }
