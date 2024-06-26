@@ -192,6 +192,14 @@ func (t *Test) Write(p []byte) (n int, err error) {
 	return 0, nil
 }
 
+// CreateLogger creates a new logger and returns a pointer to it.
+// It is recommended to use this method to create a new logger.
+func CreateLogger() *Logger {
+	var log Logger
+	log.init()
+	return &log
+}
+
 func main() {
 	var log_test Logger
 	//var log_output Test
